@@ -1,0 +1,59 @@
+CHIP RoundToPow
+{
+	IN A[16];
+	OUT out[16];
+	
+	PARTS:
+	
+	Or(a = A[15], b = A[14], out = out0);
+	Or(a = A[13], b = out0, out = out1);
+	Or(a = A[12], b = out1, out = out2);
+	Or(a = A[11], b = out2, out = out3);
+	Or(a = A[10], b = out3, out = out4);
+	Or(a = A[9], b = out4, out = out5);
+	Or(a = A[8], b = out5, out = out6);
+	Or(a = A[7], b = out6, out = out7);
+	Or(a = A[6], b = out7, out = out8);
+	Or(a = A[5], b = out8, out = out9);
+	Or(a = A[4], b = out9, out = out10);
+	Or(a = A[3], b = out10, out = out11);
+	Or(a = A[2], b = out11, out = out12);
+	Or(a = A[1], b = out12, out = out13);
+	Or(a = A[0], b = out13, out = out14);
+		
+	Not(in = A[15], out = nin15);
+	Not(in = out0, out = nout0);
+	Not(in = out1, out = nout1);
+	Not(in = out2, out = nout2);
+	Not(in = out3, out = nout3);
+	Not(in = out4, out = nout4);
+	Not(in = out5, out = nout5);
+	Not(in = out6, out = nout6);
+	Not(in = out7, out = nout7);
+	Not(in = out8, out = nout8);
+	Not(in = out9, out = nout9);
+	Not(in = out10, out = nout10);
+	Not(in = out11, out = nout11);
+	Not(in = out12, out = nout12);
+	Not(in = out13, out = nout13);
+	Not(in = out14, out = nout14);
+	
+	And(a = A[15], b = true, out = out[15]);
+	And(a = out0, b = nin15, out = out[14]);
+	And(a = out1, b = nout0, out = out[13]);
+	And(a = out2, b = nout1, out = out[12]);
+	And(a = out3, b = nout2, out = out[11]);
+	And(a = out4, b = nout3, out = out[10]);
+	And(a = out5, b = nout4, out = out[9]);
+	And(a = out6, b = nout5, out = out[8]);
+	And(a = out7, b = nout6, out = out[7]);
+	And(a = out8, b = nout7, out = out[6]);
+	And(a = out9, b = nout8, out = out[5]);
+	And(a = out10, b = nout9, out = out[4]);
+	And(a = out11, b = nout10, out = out[3]);
+	And(a = out12, b = nout11, out = out[2]);
+	And(a = out13, b = nout12, out = out[1]);
+	And(a = out14, b = nout13, out = out[0]);	
+	
+	
+}
