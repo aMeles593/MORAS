@@ -1,0 +1,9 @@
+CHIP TwosCompl
+{
+	IN in[16];
+	OUT out[16];
+	
+	PARTS:
+	Not16(in = in, out = kompl);
+	Add16(a[0] = true, b = kompl, out = out);
+}
