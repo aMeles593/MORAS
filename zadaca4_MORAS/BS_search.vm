@@ -1,0 +1,73 @@
+push constant 2048
+pop pointer 1
+
+push constant 2
+pop that 0
+push constant 3
+pop that 1
+push constant 4
+pop that 2
+push constant 6
+pop that 3
+push constant 7
+pop that 4
+push constant 8
+pop that 5
+push constant 9
+pop that 6
+
+push constant 0
+push constant 7
+push constant 4
+call BS_search.BS 3
+pop static 0
+
+label END
+goto END
+
+function BS_search.BS 2
+	push constant 0
+	pop local 0
+	
+label LOOP
+	push local 0
+	push argument 1
+	lt
+	if-goto NASTAVAK
+	
+	goto KRAJ
+
+label NASTAVAK
+	push argument 0
+	push local 0
+	add
+	pop pointer 1
+	push that 0       // u ovom redu koda mi izbacuje neku pogresku
+	pop local 1
+	
+	push local 1
+	push argument 2
+	eq
+	if-goto ISTI
+	
+	push local 0
+	push constant 1
+	add
+	pop local 0
+	goto LOOP
+
+label ISTI
+	push local 0
+	return
+
+label KRAJ
+	push constant 0
+	push constant 1
+	sub
+	return
+
+	
+	
+	
+
+
