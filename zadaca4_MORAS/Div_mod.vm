@@ -1,0 +1,73 @@
+// napravio sam obje funkcije odjednom jer su povezane
+
+push constant 10
+push constant 3
+call Div_mod.div 2
+pop static 0            // vratimo u ram[16] div
+
+push constant 10
+push constant 3
+call Div_mod.mod 2      
+pop static 1		      // vratimo u ram[17] mod
+
+label END
+goto END 
+
+function Div_mod.div 2
+	push constant 0
+	pop local 0
+	push argument 0
+	pop local 1
+	
+label LOOP
+	push local 1
+	push argument 1
+	lt
+	if-goto END_LOOP
+	
+	push local 0
+	push constant 1
+	add
+	pop local 0
+	
+	push local 1
+	push argument 1
+	sub
+	pop local 1
+	
+	goto LOOP
+
+label END_LOOP
+	push local 0
+	return
+
+function Div_mod.mod 2       
+    push constant 0
+    pop local 0           
+    push argument 0
+    pop local 1           
+
+label LOOP2
+    push local 1         
+    push argument 1       
+    lt                    
+    if-goto LOOP2_END 
+
+    push local 1         
+    push argument 1      
+    sub
+    pop local 1           
+
+    goto LOOP2  
+
+label LOOP2_END
+    push local 1          
+    return
+	
+
+	
+	
+	
+	
+	
+	
