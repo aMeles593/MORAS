@@ -1,0 +1,43 @@
+push constant 10 
+push constant 20 
+push constant 5  
+call Min.min 3
+
+pop static 0  // postavio sam rezultat funkcije na ram[16] jer je tako zadano u primjeru
+
+label END
+goto END
+
+function Min.min 0
+	push argument 0
+	push argument 1
+	lt
+	if-goto A_manji
+	goto B_manji
+
+label A_manji
+	push argument 0
+	push argument 2
+	lt
+	if-goto A_najm
+	goto C_najm
+
+label B_manji
+	push argument 1
+	push argument 2
+	lt
+	if-goto B_najm
+	goto C_najm
+
+label A_najm
+	push argument 0
+	return
+
+label B_najm
+	push argument 1
+	return
+
+label C_najm
+	push argument 2
+	return
+
