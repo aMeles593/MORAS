@@ -1,0 +1,159 @@
+class vint
+{
+    field Array lista;
+    field int size, capacity;
+    constructor vint new(int n)
+    {
+        let size=n;
+        if(size<0)
+        {
+            let capacity = 1;
+        }
+        else
+        {
+            let capacity = vint.pow(2,n);
+        }
+        let lista = Array.new(capacity);
+        return this;
+    }
+
+    method int len()
+    {
+        var int _cap;
+        let _cap = capacity;
+        return _cap;
+    }
+
+    method void set(int k, int v)
+    {
+        if(k<capacity)
+        {
+            let lista[k] = v;
+        }
+        return;
+    }
+
+    method int get(int k)
+    {
+        var int rez;
+        let rez = lista[k];
+        return rez;
+    }
+
+    method int resize(int m)
+    {
+        var Array lista2;
+        var int i, cap2, minimum, temp;
+        let i = 0;
+        if(m<0)
+        {
+            let temp = lista.get(0);
+            do lista.dispose();
+            let lista = Array.new(1);
+            let lista[0] = temp;
+            let capacity = 1;
+            return capacity;
+        }
+        
+        let cap2 = vint.pow(2,m);
+        let minimum = vint.min(capacity, cap2);
+        let lista2 = Array.new(cap2);
+
+        while(i<minimum)
+        {
+            let lista2[i] = lista[i];
+            let i = i+1;
+        }
+        do lista.dispose();
+        let lista = Array.new(cap2);
+        let i = 0;
+        while(i<cap2)
+        {
+            let lista[i] = lista2[i];
+            let i = i+1;
+        }
+        do lista2.dispose();
+        let capacity = cap2;
+        return capacity;      // vracam novi kapacitet da vidim da se promjenilo
+    }
+
+    function bool is_eq(vint vec1, vint vec2)
+    {
+        var int i;
+        if(~(vec1.len() = vec2.len()))
+        {
+            return false;
+        }
+        while(i<vec1.len())
+        {
+            if(~(vec1.get(i) = vec2.get(i)))
+            {
+                return false;
+            }
+            let i = i+1;
+        }
+        return true;
+    }
+
+    
+
+    function bool elems(vint vec1, vint vec2)
+    {
+        var int i, j, brojac;
+        var bool sadrzi;
+        if(~(vec1.len()=vec2.len()))
+        {
+            return false;
+        }
+        let i=0;
+        while(i<vec1.len())
+        {
+            let sadrzi = false;
+            let j=0;
+            while(j<vec2.len())
+            {
+                if(vec1.get(i) = vec2.get(j))
+                {
+                    let sadrzi = true;
+                    let j = vec2.len();
+                }
+                let j=j+1;
+            }
+            if(~sadrzi)
+            {
+                return false;
+            }
+            let i=i+1;
+        }
+        return true;
+
+    }
+
+    method void Dispose()
+    {
+        do memory.deAlloc(this);
+        return;
+    }
+
+    function int pow(int a, int b)
+    {
+        var int brojac, rezultat;
+        let brojac = 0;
+        let rezultat = 1;
+        while(brojac < b)
+        {
+            let rezultat = rezultat*a;
+            let brojac = brojac+1;
+        }
+        return rezultat;
+    }
+
+    function int min(int a, int b)
+    {
+        if(a<b)
+        {
+            return a;
+        }
+        return b;
+    }
+}

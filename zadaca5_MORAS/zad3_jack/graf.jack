@@ -1,0 +1,34 @@
+class graf
+{
+    function int func(int x)
+    {
+        var int y;
+        let y = -x+5;
+        // let y = x*x;
+        return y;
+    }
+
+
+    function void crtanje()
+    {
+        var int x, y;
+        do Screen.drawLine(0, 128, 255, 128);
+        do Screen.drawLine(128, 0, 128, 255);
+        let x=-32;
+        while(x<33)
+        {
+            let y = graf.func(x);
+            if((y<33) & (y>-33))
+            {
+                do Screen.drawPixel(x+128, 128-y);
+                if(((graf.func(x+1))<33) & ((graf.func(x+1))>-33))
+                {
+                    do Screen.drawLine(x+128, 128-y, x+1+128, 128 - graf.func(x+1));
+                    // ovo sam radio zbog kvadratne funkcije da bude spojen graf
+                }
+            }
+            let x = x+1;
+        }
+        return;
+    }
+}

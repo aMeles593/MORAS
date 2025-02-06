@@ -1,0 +1,71 @@
+class Main
+{
+    function void main()
+    {
+        var vint vektor, vektor2;
+        var int i, size1, size2, rez, new_cap;
+        var bool rez1, rez2;
+        let i=0;
+        let vektor = vint.new(3);
+        let vektor2 = vint.new(3);
+        let size1 = vektor.len();
+        let size2 = vektor2.len();
+
+        do vektor.set(0,4);
+        do vektor.set(1,9);
+        do vektor.set(2,2);
+
+        do vektor2.set(0,4);
+        do vektor2.set(1,2);
+        do vektor2.set(2,9);
+
+        while(i<size1)
+        {
+            do Output.printInt(vektor.get(i));
+            do Output.printChar(" ");
+            let i = i+1;
+        }
+        do Output.println();
+        let i = 0;
+        while(i<size2)
+        {
+            do Output.printInt(vektor2.get(i));
+            do Output.printChar(" ");
+            let i = i+1;
+        }
+        do Output.println();
+        do Output.println();
+
+        let rez1 = vint.is_eq(vektor, vektor2);
+        do Output.printInt(rez1);
+        do Output.println();
+
+        let rez2 = vint.elems(vektor, vektor2);
+        do Output.printInt(rez2);
+        do Output.println();
+
+
+        let new_cap = vektor.resize(4);
+        do Output.printInt(new_cap);
+        do Output.println();
+        let i = 0; 
+
+        while(i<new_cap)
+        {
+            do Output.printInt(vektor.get(i));
+            do Output.printChar(" ");
+            let i = i+1;
+        }
+        do Output.println();
+
+        let rez = vektor.get(1);
+        do Output.printInt(rez);
+        do Output.println();  
+
+        do vektor.Dispose();  
+
+
+        return;
+
+    }
+}

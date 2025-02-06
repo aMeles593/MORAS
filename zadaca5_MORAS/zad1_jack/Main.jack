@@ -1,0 +1,41 @@
+class Main
+{
+    function void main()
+    {
+        var Array list1;
+        let list1 = Array.new(5);
+        let list1[0] = 7;
+        let list1[1] = 5; 
+        let list1[2] = 12; 
+        let list1[3] = 1; 
+        let list1[4] = 3;
+
+        do Output.printInt(list1[0]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[1]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[2]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[3]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[4]);
+        do Output.printChar(" ");
+        do Output.println();
+
+        do qsort.qsort(list1,0,4);
+
+        do Output.printInt(list1[0]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[1]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[2]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[3]);
+        do Output.printChar(" ");
+        do Output.printInt(list1[4]);
+        do Output.printChar(" ");
+
+        do list1.dispose();
+        return;
+    }
+}
