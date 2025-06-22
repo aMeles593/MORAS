@@ -1,0 +1,39 @@
+class zid
+{
+    field int aloc;
+    field int lx, ly, rx, ry;
+
+    constructor zid new() {
+        let aloc = 0;
+        return this;
+    }
+
+    method void init(int x1, int y1, int x2, int y2) {
+        let lx = x1;
+        let ly = y1;
+        let rx = x2;
+        let ry = y2;
+        return;
+    }
+//
+    method int zid_lx(){
+        return lx; 
+    }
+
+    method int zid_ly(){
+        return ly;
+    }
+
+    method int zid_rx(){
+        return rx;
+    }
+
+    method int zid_ry(){
+        return ry;
+    }
+
+    method void crtanje() {
+        do Screen.drawRectangle(lx, ly, rx, ry);
+        return;
+    }
+}

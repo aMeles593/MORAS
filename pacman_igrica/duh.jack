@@ -1,0 +1,81 @@
+class duh
+{
+    field int aloc, x,y;
+    constructor duh new()
+    {
+        let aloc = 0;
+        return this;
+    }
+
+    method void init(int x1, int y1)
+    {
+        let x = x1;
+        let y = y1;
+        return;
+    }
+
+    method int trenutni_x_duh(){
+        return x;
+    }
+
+    method int trenutni_y_duh(){
+        return y;
+    }
+
+    method void crtaj_duha() {
+        var int sirina;
+        var int visina;
+        var int i;
+        var int SirinaDna;
+        let visina = 12;
+        let sirina = 10;
+        
+        do Screen.setColor(true);
+        do Screen.drawCircle(x + (sirina / 2), y + (sirina / 2), (sirina / 2));
+        do Screen.drawRectangle(x, y + (sirina / 2), x + sirina, y + visina);
+        let SirinaDna = sirina / 4;
+        let i = 0;
+        while (i < 4) {
+            do Screen.drawCircle(x + (i * SirinaDna) + (SirinaDna / 2), y + visina, (SirinaDna / 2));
+            let i = i + 1;
+        }
+        do Screen.setColor(false);
+        do Screen.drawCircle(x + (sirina / 3), y + (sirina / 2), sirina / 10);
+        do Screen.drawCircle(x + (2 * sirina / 3), y + (sirina / 2), sirina / 10);
+        do Screen.setColor(true);
+        do Screen.drawCircle(x + (sirina / 3), y + (sirina / 2), sirina / 20);
+        do Screen.drawCircle(x + (2 * sirina / 3), y + (sirina / 2), sirina / 20);
+
+        return;
+    }
+
+    method void obrisi_duha() {
+        var int sirina;
+        var int visina;
+        var int i;
+        var int SirinaDna;
+        let visina = 12;
+        let sirina = 10;
+
+        do Screen.setColor(false);
+        do Screen.drawCircle(x + (sirina / 2), y + (sirina / 2), (sirina / 2));
+        do Screen.drawRectangle(x, y + (sirina / 2), x + sirina, y + visina);
+        let SirinaDna = sirina / 4;
+        let i = 0;
+        while (i < 4) {
+            do Screen.drawCircle(x + (i * SirinaDna) + (SirinaDna / 2), y + visina, (SirinaDna / 2));
+            let i = i + 1;
+        }
+        do Screen.drawCircle(x + (sirina / 3), y + (sirina / 2), sirina / 10);
+        do Screen.drawCircle(x + (2 * sirina / 3), y + (sirina / 2), sirina / 10);
+
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+        
+}

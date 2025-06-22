@@ -1,0 +1,180 @@
+class zidovi
+{
+    field int broj_zidova;
+    field Array zidovi;
+
+    constructor zidovi new() 
+    {
+      let broj_zidova = 33;
+      let zidovi = Array.new(broj_zidova);
+      do napravi_zidove();
+      return this;
+    }
+
+    method void init()
+    {
+      do crtaj_zidove();
+      return;
+    }
+
+    method Array zidovi_arr_funkc(){
+      return zidovi;
+    }
+    
+
+    method void napravi_zidove()
+    {
+        
+        var zid z;
+
+        let z = zid.new();
+        do z.init(10,10,320,15);
+        let zidovi[0] = z;
+
+        let z = zid.new();
+        do z.init(10,15,15,250);
+        let zidovi[1] = z;
+
+        let z = zid.new();
+        do z.init(15,245,320,250);
+        let zidovi[2] = z;
+
+        let z = zid.new();
+        do z.init(160,15,165,45);
+        let zidovi[3] = z;
+
+        let z = zid.new();
+        do z.init(40,40,130,45);
+        let zidovi[4] = z;
+
+        let z = zid.new();
+        do z.init(195,40,290,45);
+        let zidovi[5] = z;
+
+        let z = zid.new();
+        do z.init(40,70,45,110);
+        let zidovi[6] = z;
+
+        let z = zid.new();
+        do z.init(15,135,40,140);
+        let zidovi[7] = z;
+
+        let z = zid.new();
+        do z.init(40,170,45,225);
+        let zidovi[8] = z;
+
+        let z = zid.new();
+        do z.init(45,70,75,75);
+        let zidovi[9] = z;
+
+        let z = zid.new();
+        do z.init(40,165,75,170);
+        let zidovi[10] = z;
+
+        let z = zid.new();
+        do z.init(75,100,80,140);
+        let zidovi[11] = z;
+
+        let z = zid.new();
+        do z.init(75,100,130,105);
+        let zidovi[12] = z;
+
+        let z = zid.new();
+        do z.init(110,70,220,75);
+        let zidovi[13] = z;
+
+        let z = zid.new();
+        do z.init(320,10,325,250);
+        let zidovi[14] = z;
+
+        let z = zid.new();
+        do z.init(160,75,165,105);
+        let zidovi[15] = z;        
+
+        let z = zid.new();
+        do z.init(255,70,290,75);
+        let zidovi[16] = z;
+
+        let z = zid.new();
+        do z.init(285,70,290,110);
+        let zidovi[17] = z;
+
+        let z = zid.new();
+        do z.init(195,100,255,105); 
+        let zidovi[18] = z;
+
+        let z = zid.new();
+        do z.init(250,100,255,140); 
+        let zidovi[19] = z;
+        
+        let z = zid.new();
+        do z.init(115,130,120,165); 
+        let zidovi[20] = z;
+
+        let z = zid.new();
+        do z.init(120,160,210,165); 
+        let zidovi[21] = z;
+
+        let z = zid.new();
+        do z.init(120,130,150,135); 
+        let zidovi[22] = z;
+
+        let z = zid.new();
+        do z.init(180,130,210,135); 
+        let zidovi[23] = z;
+
+        let z = zid.new();
+        do z.init(210,130,215,165); 
+        let zidovi[24] = z;
+
+        let z = zid.new();
+        do z.init(250,165,290,170); 
+        let zidovi[25] = z;
+
+        let z = zid.new();
+        do z.init(285,165,290,225); 
+        let zidovi[26] = z;
+
+        let z = zid.new();
+        do z.init(75,195,80,225); 
+        let zidovi[27] = z;
+
+        let z = zid.new();
+        do z.init(75,220,125,225); 
+        let zidovi[28] = z;
+
+        let z = zid.new();
+        do z.init(205,220,255,225); 
+        let zidovi[29] = z;
+
+        let z = zid.new();
+        do z.init(250,195,255,225); 
+        let zidovi[30] = z;
+
+        let z = zid.new();
+        do z.init(160,220,165,250); 
+        let zidovi[31] = z;
+
+        let z = zid.new();
+        do z.init(115,190,210,195); 
+        let zidovi[32] = z;
+
+
+        return;
+    }
+
+    method void crtaj_zidove()
+    {
+      var int i;
+      var zid z;
+      let i = 0;
+      while(i<broj_zidova)
+      {
+        let z = zidovi[i];
+        do z.crtanje();
+        let i = i+1;
+      }
+      return;
+    }
+    
+}

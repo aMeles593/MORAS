@@ -1,0 +1,143 @@
+class igrac
+{
+    
+    field int x, y, velicina, brzina, endx, endy;
+    field int smjer;
+    field zidovi sviZidovi;
+    
+
+    constructor igrac new() {
+        let brzina = 1;
+        let velicina = 16;
+        let smjer = 0; 
+        return this;   
+    }
+
+    method int trenutni_x(){
+        return x;
+    }
+
+    method int trenutni_y(){
+        return y;
+    }
+
+    method int iduci_x()  
+    {
+        var int to_ret_x;
+
+        let to_ret_x = -1;
+        if(smjer = 4){
+            let to_ret_x = x+1;
+        }
+        if(smjer = 3){
+            let to_ret_x = x-1;
+        }
+
+        if(to_ret_x = -1){return x;}
+        return to_ret_x;
+    }
+
+    method int iduci_y()
+    {
+        var int to_ret_y;
+
+        let to_ret_y = -1;
+        if(smjer = 1){
+            let to_ret_y = y - 1;
+        }
+        if(smjer = 2){
+            let to_ret_y = y + 1;
+        }
+
+        if(to_ret_y = -1){return y;}
+        
+        return to_ret_y;
+    }
+
+    method void postaviPoziciju(int xPoz, int yPoz) {
+        let x = xPoz;
+        let y = yPoz;
+        do crtaj_pacmana(x, y);
+        return;
+    }
+
+    method void postaviZidove(zidovi z) {
+        let sviZidovi = z;
+        return;
+    }
+
+    method void crtaj_pacmana(int x, int y) {
+        
+		do Screen.drawCircle(x, y+8, 8);
+		do Screen.setColor(false);
+		do Screen.drawCircle(x, y+8, 7);
+		do Screen.setColor(true);
+        
+		do Screen.drawLine(x, y+8, x+5, y+4);
+		do Screen.drawLine(x, y+8, x+5, y+12);
+
+		do Screen.setColor(false);
+		do Screen.drawRectangle(x+6, y+4, x+8, y+12);
+		do Screen.setColor(true);
+		
+    
+        return;
+    }
+
+    method void pomjeri()
+    {
+        
+        do obrisi_pacmana(x, y);  
+        if (smjer = 1) 
+        { 
+            let y = y - brzina;
+        }  
+        if (smjer = 2) 
+        { 
+            let y = y + brzina;
+        }
+        if (smjer = 3) 
+        { 
+            let x = x - brzina; 
+        }  
+        if (smjer = 4) 
+        { 
+            let x = x + brzina; 
+        }
+        do crtaj_pacmana(x, y);  
+        return;
+    }
+
+    method void obrisi_pacmana(int x, int y) {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x-8, y, x+8, y+16);
+        do Screen.setColor(true);
+
+        return;
+    }
+
+    method void odaberi_smjer(int tipka)
+    {
+        if (tipka = 131) {
+            let smjer = 1; 
+        }
+        if (tipka = 133) {
+            let smjer = 2; 
+        }
+        if (tipka = 130) {
+            let smjer = 3; 
+        }
+        if (tipka = 132) {
+            let smjer = 4; 
+        }
+    return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    
+}
+  

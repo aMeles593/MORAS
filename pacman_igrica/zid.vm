@@ -1,0 +1,52 @@
+function zid.new 0
+push constant 5
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 0
+push pointer 0
+return
+function zid.init 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push argument 3
+pop this 3
+push argument 4
+pop this 4
+push constant 0
+return
+function zid.zid_lx 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function zid.zid_ly 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function zid.zid_rx 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function zid.zid_ry 0
+push argument 0
+pop pointer 0
+push this 4
+return
+function zid.crtanje 0
+push argument 0
+pop pointer 0
+push this 1
+push this 2
+push this 3
+push this 4
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return

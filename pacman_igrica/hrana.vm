@@ -1,0 +1,84 @@
+function hrana.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 0
+push pointer 0
+return
+function hrana.pomakni 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push constant 0
+return
+function hrana.init 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push argument 3
+pop this 3
+push constant 0
+return
+function hrana.vrati_x0 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function hrana.vrati_y0 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function hrana.vrati_radijus 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function hrana.crtaj_hranu 0
+push argument 0
+pop pointer 0
+push this 1
+push this 2
+push this 3
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+return
+function hrana.obrisi_hranu 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 1
+push this 2
+push this 3
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+return
+function hrana.pojedena 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+return
+function hrana.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,575 @@
+class Main
+{
+    function void main(){
+        var zidovi z;
+        var hrane h;
+        var duh duh1; 
+        var duh duh2;
+        var duh duh3;
+        var igrac p;
+        var int smjer, i,j,k, igrac_x, igrac_y, x_hrana, y_hrana, lx_zid, ly_zid, rx_zid, ry_zid, iduci_igrac_x, iduci_igrac_y, duh1_x, duh1_y, duh2_x, duh2_y, duh3_x, duh3_y;
+        var Array hrane_arr, zidovi_arr;
+        var hrana pojedinacna_hrana;
+        var zid pojedinacan_zid;
+        var int rezultat;
+        var rezultat r;
+        var boolean dosao_do_zida_dolje, dosao_do_zida_lijevo, dosao_do_zida_desno, dosao_do_zida_gore;
+        var int smjer_duha_2, smjer_duha_1, smjer_duha_3;
+        var boolean radi;
+
+        let radi = true;
+        let j = 0;
+        let k = 0;
+        
+        let rezultat = 0;
+        let z=zidovi.new();
+        do z.init();
+        let h = hrane.new();
+        do h.init();
+
+        
+        
+        let duh1 = duh.new();
+        do duh1.init(135, 140);
+        do duh1.crtaj_duha();
+        let duh2 = duh.new();
+        do duh2.init(165, 140);
+        do duh2.crtaj_duha();
+        let duh3 = duh.new();
+        do duh3.init(195, 140);
+        do duh3.crtaj_duha(); 
+
+        let smjer_duha_2 = 1; 
+        let smjer_duha_1 = 1;
+        let smjer_duha_3 = 1;
+
+        let p = igrac.new();
+        do p.postaviPoziciju(230, 116); 
+        
+        while(radi)
+        {
+            while(Keyboard.keyPressed() = 0){}
+            let smjer = Keyboard.keyPressed();
+            do p.odaberi_smjer(smjer);
+
+            let i = 0;
+
+            let igrac_x = p.trenutni_x();
+            let igrac_y = p.trenutni_y();
+
+            let duh1_x = duh1.trenutni_x_duh();
+            let duh1_y = duh1.trenutni_y_duh();
+            let duh2_x = duh2.trenutni_x_duh();
+            let duh2_y = duh2.trenutni_y_duh();
+            let duh3_x = duh3.trenutni_x_duh();
+            let duh3_y = duh3.trenutni_y_duh();
+
+            
+
+
+            let hrane_arr = h.hrane_arr_funkc();
+
+
+            while((i<106))
+            { 
+                let pojedinacna_hrana = hrane_arr[i];
+                
+                let x_hrana = pojedinacna_hrana.vrati_x0();
+                let y_hrana = pojedinacna_hrana.vrati_y0();
+
+                
+                if((((igrac_x) - 8) < (x_hrana+4))  & (((igrac_x) + 8) > (x_hrana-4))){
+                    if(((igrac_y) < (y_hrana+4))  &  (((igrac_y) + 15) > (y_hrana-4))){
+                        let rezultat = rezultat+1;
+                        do r.ispisi_rezultat(rezultat);
+                        do pojedinacna_hrana.obrisi_hranu();
+                        //do pojedinacna_hrana.dispose();
+                        do pojedinacna_hrana.pomakni(400,200);
+                        }
+                    }
+                let i = i+1;
+            }
+
+            let i = 0;
+
+            let zidovi_arr = z.zidovi_arr_funkc();
+
+            let iduci_igrac_x = p.iduci_x();
+            let iduci_igrac_y = p.iduci_y();
+
+            while(i<33){
+                let pojedinacan_zid = zidovi_arr[i];
+
+                let lx_zid = pojedinacan_zid.zid_lx();
+                let ly_zid = pojedinacan_zid.zid_ly();
+                let rx_zid = pojedinacan_zid.zid_rx();
+                let ry_zid = pojedinacan_zid.zid_ry();
+
+                if(((((iduci_igrac_x + 9) > lx_zid) & ((iduci_igrac_y-1) < ry_zid)) & ((iduci_igrac_x - 9) < rx_zid)) & ((iduci_igrac_y+17) > ly_zid) ){
+                    let smjer = 0; 
+                }
+  
+                let i = i+1;
+            }
+            
+            let i = 0;
+
+            while((i<106))
+            { 
+                let pojedinacna_hrana = hrane_arr[i];
+                let x_hrana = pojedinacna_hrana.vrati_x0();
+                let y_hrana = pojedinacna_hrana.vrati_y0();
+
+
+                if((((duh2_x) - 8) < (x_hrana+4))  & (((duh2_x) + 8) > (x_hrana-4))){    
+                      if(((duh2_y) < (y_hrana+4))  &  (((duh2_y) + 15) > (y_hrana-4))){  
+                        do pojedinacna_hrana.obrisi_hranu();
+                        //do pojedinacna_hrana.dispose();
+                        let pojedinacna_hrana = hrana.new();
+                        do pojedinacna_hrana.init(x_hrana, y_hrana, 3);
+                        let hrane_arr[i] = pojedinacna_hrana;
+                        do pojedinacna_hrana.crtaj_hranu();
+                    }
+                }
+                let i = i+1;
+            }
+
+
+            let dosao_do_zida_dolje = false;
+            let dosao_do_zida_gore = false;
+            let dosao_do_zida_lijevo = false;
+            let dosao_do_zida_desno = false;
+            let i = 0;
+            
+            while(i<33)
+            {
+                let pojedinacan_zid = zidovi_arr[i];
+                let lx_zid = pojedinacan_zid.zid_lx();
+                let ly_zid = pojedinacan_zid.zid_ly();
+                let rx_zid = pojedinacan_zid.zid_rx();
+                let ry_zid = pojedinacan_zid.zid_ry();
+
+                if((((duh2_x +12) > lx_zid)) & (((duh2_x-2 ) < rx_zid)) & (((duh2_y+16) > ly_zid)) & (((duh2_y-2) <ry_zid)) & (smjer_duha_2 = 1))  
+                { 
+                    let dosao_do_zida_dolje = true;
+                    let smjer_duha_2 = 4;                                   
+                }
+                else{if((((duh2_x+12) > lx_zid)) & (((duh2_x-2)< rx_zid)) & (((duh2_y+16) > ly_zid)) & (((duh2_y-2) <ry_zid))  & (smjer_duha_2 = 4))
+                { 
+                    let dosao_do_zida_desno = true;
+                    let smjer_duha_2 = 2;
+                } 
+                else{if((((duh2_x+12) > lx_zid)) & (((duh2_x-2) < rx_zid)) & (((duh2_y+16) > ly_zid)) & (((duh2_y-2) <ry_zid))  & (smjer_duha_2 = 2))
+                {  
+                    let dosao_do_zida_gore = true;
+                    let smjer_duha_2 = 3; 
+                }
+                else{if((((duh2_x+12) > lx_zid)) & (((duh2_x-2) < rx_zid)) & (((duh2_y+16) > ly_zid)) & (((duh2_y-2) <ry_zid))  & (smjer_duha_2 = 3))
+                {  
+                    let dosao_do_zida_lijevo = true;
+                    let smjer_duha_2 = 1; 
+                }}}}
+                let i = i+1;
+            }
+            if(dosao_do_zida_dolje)
+            {
+                let duh2_y = duh2_y+1; 
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            if(dosao_do_zida_desno)
+            {
+                let duh2_x = duh2_x-1;
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            if(dosao_do_zida_gore)
+            {
+                let duh2_y = duh2_y-1;
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            if(dosao_do_zida_lijevo)
+            {
+                let duh2_x = duh2_x+1;
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            if(smjer_duha_2 = 1)
+            {
+                let duh2_y = duh2_y-1;
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            if(smjer_duha_2 = 2)
+            {
+                let duh2_y = duh2_y+1;
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            if(smjer_duha_2 = 3)
+            {
+                let duh2_x = duh2_x-1;
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            if(smjer_duha_2 = 4)
+            {
+                let duh2_x = duh2_x+1;
+                do duh2.obrisi_duha();
+                //do duh2.dispose();
+                let duh2 = duh.new();
+                do duh2.init(duh2_x, duh2_y);
+                do duh2.crtaj_duha();
+            }
+            let i = 0;
+            
+            
+            if(rezultat > 5)
+            {
+                if(rezultat = 6)
+                {
+                    if(j<1)
+                    {
+                        do duh1.obrisi_duha();
+                        //do duh1.dispose();
+                        let duh1_x = 165;
+                        let duh1_y = 140;
+                        let duh1 = duh.new();
+                        do duh1.init(duh1_x, duh1_y);
+                        do duh1.crtaj_duha();
+                        let j = j+1;
+                    }
+                }
+                while((i<106))
+                { 
+                    let pojedinacna_hrana = hrane_arr[i];
+                    let x_hrana = pojedinacna_hrana.vrati_x0();
+                    let y_hrana = pojedinacna_hrana.vrati_y0();
+
+                    
+                    if((((duh1_x) - 8) < (x_hrana+4))  & (((duh1_x) + 8) > (x_hrana-4))){
+                        if(((duh1_y) < (y_hrana+4))  &  (((duh1_y) + 15) > (y_hrana-4))){
+                            do pojedinacna_hrana.obrisi_hranu();
+                            //do pojedinacna_hrana.dispose();
+                            let pojedinacna_hrana = hrana.new();
+                            do pojedinacna_hrana.init(x_hrana, y_hrana, 3);
+                            let hrane_arr[i] = pojedinacna_hrana;
+                            do pojedinacna_hrana.crtaj_hranu();
+                            }
+                        }
+                    let i = i+1;
+                }
+
+                let dosao_do_zida_dolje = false;
+                let dosao_do_zida_gore = false;
+                let dosao_do_zida_lijevo = false;
+                let dosao_do_zida_desno = false;
+                let i = 0;
+                
+                while(i<33)
+                {
+                    let pojedinacan_zid = zidovi_arr[i];
+                    let lx_zid = pojedinacan_zid.zid_lx();
+                    let ly_zid = pojedinacan_zid.zid_ly();
+                    let rx_zid = pojedinacan_zid.zid_rx();
+                    let ry_zid = pojedinacan_zid.zid_ry();
+
+                    if((((duh1_x +12) > lx_zid)) & (((duh1_x-2 ) < rx_zid)) & (((duh1_y+16) > ly_zid)) & (((duh1_y-2) <ry_zid)) & (smjer_duha_1 = 1))
+                    {
+                        let dosao_do_zida_dolje = true;
+                        let smjer_duha_1 = 4; 
+                    }
+                    else{if((((duh1_x+12) > lx_zid)) & (((duh1_x-2)< rx_zid)) & (((duh1_y+16) > ly_zid)) & (((duh1_y-2) <ry_zid))  & (smjer_duha_1 = 4))
+                    {
+                        let dosao_do_zida_desno = true;
+                        let smjer_duha_1 = 2; 
+                    }
+                    else{if((((duh1_x+12) > lx_zid)) & (((duh1_x-2) < rx_zid)) & (((duh1_y+16) > ly_zid)) & (((duh1_y-2) <ry_zid))  & (smjer_duha_1 = 2))
+                    {
+                        let dosao_do_zida_gore = true;
+                        let smjer_duha_1 = 3; 
+                    }
+                    else{if((((duh1_x+12) > lx_zid)) & (((duh1_x-2) < rx_zid)) & (((duh1_y+16) > ly_zid)) & (((duh1_y-2) <ry_zid))  & (smjer_duha_1= 3))
+                    {
+                        let dosao_do_zida_lijevo = true;
+                        let smjer_duha_1 = 1; 
+                    }}}}
+                    let i = i+1;
+                }
+                if(dosao_do_zida_dolje)
+                {
+                    let duh1_y = duh1_y+1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh1_x, duh1_y);
+                    do duh1.crtaj_duha();
+                }
+                if(dosao_do_zida_desno)
+                {
+                    let duh1_x = duh1_x-1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh1_x, duh1_y);
+                    do duh1.crtaj_duha();
+                }
+                if(dosao_do_zida_gore)
+                {
+                    let duh1_y = duh1_y-1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh2_x, duh2_y);
+                    do duh1.crtaj_duha();
+                }
+                if(dosao_do_zida_lijevo)
+                {
+                    let duh1_x = duh1_x+1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh1_x, duh1_y);
+                    do duh1.crtaj_duha();
+                }
+                if(smjer_duha_1 = 1)
+                {
+                    let duh1_y = duh1_y-1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh1_x, duh1_y);
+                    do duh1.crtaj_duha();
+                }
+                if(smjer_duha_1 = 2)
+                {
+                    let duh1_y = duh1_y+1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh1_x, duh1_y);
+                    do duh1.crtaj_duha();
+                }
+                if(smjer_duha_1 = 3)
+                {
+                    let duh1_x = duh1_x-1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh1_x, duh1_y);
+                    do duh1.crtaj_duha();
+                }
+                if(smjer_duha_1 = 4)
+                {
+                    let duh1_x = duh1_x+1;
+                    do duh1.obrisi_duha();
+                    //do duh1.dispose();
+                    let duh1 = duh.new();
+                    do duh1.init(duh1_x, duh1_y);
+                    do duh1.crtaj_duha();
+                }
+            }
+
+            if(rezultat > 20)
+            {
+                if(rezultat = 21)
+                {
+                    if(k<1)
+                    {
+                        do duh3.obrisi_duha();
+                        //do duh3.dispose();
+                        let duh3_x = 165;
+                        let duh3_y = 140;
+                        let duh3 = duh.new();
+                        do duh3.init(duh3_x, duh3_y);
+                        do duh3.crtaj_duha();
+                        let k = k+1;
+                    }
+                }
+                while((i<106))
+                { 
+                    let pojedinacna_hrana = hrane_arr[i];
+                    let x_hrana = pojedinacna_hrana.vrati_x0();
+                    let y_hrana = pojedinacna_hrana.vrati_y0();
+
+                    if((((duh3_x) - 8) < (x_hrana+4))  & (((duh3_x) + 8) > (x_hrana-4))){
+                        if(((duh3_y) < (y_hrana+4))  &  (((duh3_y) + 15) > (y_hrana-4))){
+                            do pojedinacna_hrana.obrisi_hranu();
+                            //do pojedinacna_hrana.dispose();
+                            let pojedinacna_hrana = hrana.new();
+                            do pojedinacna_hrana.init(x_hrana, y_hrana, 3);
+                            let hrane_arr[i] = pojedinacna_hrana;
+                            do pojedinacna_hrana.crtaj_hranu();
+                            }
+                        }
+                    let i = i+1;
+                }
+
+                let dosao_do_zida_dolje = false;
+                let dosao_do_zida_gore = false;
+                let dosao_do_zida_lijevo = false;
+                let dosao_do_zida_desno = false;
+                let i = 0;
+                
+                while(i<33)
+                {
+                    let pojedinacan_zid = zidovi_arr[i];
+                    let lx_zid = pojedinacan_zid.zid_lx();
+                    let ly_zid = pojedinacan_zid.zid_ly();
+                    let rx_zid = pojedinacan_zid.zid_rx();
+                    let ry_zid = pojedinacan_zid.zid_ry();
+
+                    if((((duh3_x +12) > lx_zid)) & (((duh3_x-2 ) < rx_zid)) & (((duh3_y+16) > ly_zid)) & (((duh3_y-2) <ry_zid)) & (smjer_duha_3 = 1))
+                    {
+                        let dosao_do_zida_dolje = true;
+                        let smjer_duha_3 = 4; 
+                    }
+                    else{if((((duh3_x+12) > lx_zid)) & (((duh3_x-2)< rx_zid)) & (((duh3_y+16) > ly_zid)) & (((duh3_y-2) <ry_zid))  & (smjer_duha_3 = 4))
+                    {
+                        let dosao_do_zida_desno = true;
+                        let smjer_duha_3 = 2; 
+                    }
+                    else{if((((duh3_x+12) > lx_zid)) & (((duh3_x-2) < rx_zid)) & (((duh3_y+16) > ly_zid)) & (((duh3_y-2) <ry_zid))  & (smjer_duha_3 = 2))
+                    {
+                        let dosao_do_zida_gore = true;
+                        let smjer_duha_3 = 3; 
+                    }
+                    else{if((((duh3_x+12) > lx_zid)) & (((duh3_x-2) < rx_zid)) & (((duh3_y+16) > ly_zid)) & (((duh3_y-2) <ry_zid))  & (smjer_duha_3 = 3))
+                    {
+                        let dosao_do_zida_lijevo = true;
+                        let smjer_duha_3 = 1; 
+                    }}}}
+                    let i = i+1;
+                }
+                if(dosao_do_zida_dolje)
+                {
+                    let duh3_y = duh3_y+1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+                if(dosao_do_zida_desno)
+                {
+                    let duh3_x = duh3_x-1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+                if(dosao_do_zida_gore)
+                {
+                    let duh3_y = duh3_y-1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+                if(dosao_do_zida_lijevo)
+                {
+                    let duh3_x = duh3_x+1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+                if(smjer_duha_3 = 1)
+                {
+                    let duh3_y = duh3_y-1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+                if(smjer_duha_3 = 2)
+                {
+                    let duh3_y = duh3_y+1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+                if(smjer_duha_3 = 3)
+                {
+                    let duh3_x = duh3_x-1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+                if(smjer_duha_3 = 4)
+                {
+                    let duh3_x = duh3_x+1;
+                    do duh3.obrisi_duha();
+                    //do duh3.dispose();
+                    let duh3 = duh.new();
+                    do duh3.init(duh3_x, duh3_y);
+                    do duh3.crtaj_duha();
+                }
+            }
+                
+            
+            
+            if(((igrac_x + 8) > duh1_x) & ((igrac_x  - 8) < (duh1_x + 10)) & ((igrac_y + 16) > duh1_y) & (igrac_y < (duh1_y + 12))) 
+            {
+                let radi = false;
+            }
+            
+            if(((igrac_x + 8) > duh2_x) & ((igrac_x -8) < (duh2_x + 10)) & ((igrac_y + 16) > duh2_y) & (igrac_y < (duh2_y + 12))) 
+            {
+                let radi = false;
+            }
+            
+            if(((igrac_x + 8) > duh3_x) & ((igrac_x -8) < (duh3_x + 10)) & ((igrac_y + 16) > duh3_y) & (igrac_y < (duh3_y + 12))) 
+            {
+                let radi = false;
+            }
+
+            if(~(smjer=0))
+            {
+                do p.pomjeri(); 
+            }
+            if(rezultat = 106)
+            {
+                do r.pobjeda(rezultat);
+                let radi = false;
+            }
+            
+        }
+        if(rezultat < 106)
+        {
+            do Output.moveCursor(10,46);
+            do Output.printString("GAME OVER");
+        }
+        return;
+    } 
+}

@@ -1,0 +1,65 @@
+class hrana
+{
+    field int aloc;
+    field int x0, y0, r;
+    constructor hrana new()
+    {
+        let aloc = 0;
+        return this;
+    }
+
+    method void pomakni(int X0, int Y0){
+        let x0 = X0;
+        let y0 = Y0;
+        return;
+    }
+
+    method void init(int X0, int Y0, int R)
+    {
+        let x0 = X0;
+        let y0 = Y0;
+        let r = R;
+        return;
+    }
+
+    method int vrati_x0()
+    {
+        return x0;
+    }
+
+    method int vrati_y0()
+    {
+        return y0;
+    }
+
+    method int vrati_radijus()
+    {
+        return r;
+    }
+
+    method void crtaj_hranu() 
+    {
+        do Screen.drawCircle(x0,y0,r);
+
+        return;
+    }
+
+    method void obrisi_hranu()
+    {
+        do Screen.setColor(false);   
+        do Screen.drawCircle(x0,y0,r);
+        do Screen.setColor(true);
+        return;
+    }
+
+    method boolean pojedena()
+    {
+        return true;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+}

@@ -1,0 +1,28 @@
+class rezultat
+{
+    constructor rezultat new()
+    {
+        return this;
+    }
+
+    method void ispisi_rezultat(int rez)
+    {
+        do Output.moveCursor(3, 46);
+        do Output.printString("Rezultat");
+        do Output.printString(":");
+        do Output.printInt(rez);
+        return;
+    }
+
+    method void pobjeda(int rez)
+    {
+        do Output.moveCursor(7,46);
+        do Output.printString("POBJEDIO SI");
+        do Output.moveCursor(8,46);
+        do Output.printString("Konacan");
+        do Output.moveCursor(9,46);
+        do Output.printString("rezultat: ");
+        do Output.printInt(rez);
+        return;
+    }
+}

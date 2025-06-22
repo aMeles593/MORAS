@@ -1,0 +1,149 @@
+class hrane
+{
+    field int broj_hrane;
+    field Array hrane;
+    
+    constructor hrane new() 
+    {
+      let broj_hrane = 106;
+      let hrane = Array.new(broj_hrane);
+      do napravi_hranu();
+      return this;
+    }
+
+    method void init()
+    {
+      do crtaj_svu_hranu();
+      return;
+    }
+
+    method Array hrane_arr_funkc(){
+      return hrane;
+    }
+
+    method void napravi_hranu()  
+    {
+        var hrana h;
+        var int i;
+        var int x;
+        let i = 0;
+        let x = 25;
+        while((x < 320) & (i < 14)){
+          if((i=7)){
+            let x = x+20;
+          }
+          let h = hrana.new();
+          do h.init(x, 30, 3);
+          let hrane[i] = h;
+          let x = x+20;
+          let i = i+1;
+        }
+
+        let x = 25;
+        while((x < 320) & (i < 29)){
+            let h = hrana.new();
+            do h.init(x, 60, 3);
+            let hrane[i] = h;
+            let x = x+20;
+            let i = i+1;
+        }
+
+        let x = 25;
+        while((x < 320) & (i < 41)){
+          if(((i=30) | (i=35)) | (i=40))
+          {
+            let x = x+20;
+            
+          }
+          let h = hrana.new();
+          do h.init(x, 90, 3);
+          let hrane[i] = h;
+          let x = x+20;
+          let i = i+1;
+        }
+        let x = 25;
+        while((x < 320) & (i < 56)){
+            let h = hrana.new();
+            do h.init(x, 120, 3);
+            let hrane[i] = h;
+            let x = x+20;
+            let i = i+1;
+        }
+        let x = 25;
+        while((x < 320) & (i < 66)){
+          if((i=61))
+          {
+            let x = x+20+20+20+20+20;
+          }
+          let h = hrana.new();
+           do h.init(x, 150, 3);
+          let hrane[i] = h;
+          let x = x+20;
+          let i = i+1;
+        }
+        let x = 25;
+        while((x < 320) & (i < 79)){
+          if((i=67) | (i=78))
+          {
+            let x = x+20;
+          }
+          let h = hrana.new();
+          do h.init(x, 180, 3);
+          let hrane[i] = h;
+          let x = x+20;
+          let i = i+1;
+        }
+        let x = 25;
+        while((x < 320) & (i < 92)){
+          if((i=80) | (i=91))
+          {
+            let x = x+20;
+          }
+          let h = hrana.new();
+          do h.init(x, 210, 3);
+          let hrane[i] = h;
+          let x = x+20;
+          let i = i+1;
+        }
+        let x = 25;
+        while((x < 320) & (i < 106)){
+          if((i=99))
+          {
+            let x = x+20;
+          }
+          let h = hrana.new();
+          do h.init(x, 235, 3);
+          let hrane[i] = h;
+          let x = x+20;
+          let i = i+1;
+        }
+        return;
+    }
+
+    method void crtaj_svu_hranu()
+    {
+      var int i;
+      var hrana h;
+      let i = 0;
+      while(i<broj_hrane)
+      {
+        if(~(hrane[i]=null))
+        {
+          let h = hrane[i];
+          do h.crtaj_hranu();
+        }
+        let i = i+1;
+      }
+      return;
+    }
+
+    method Array vrati_hranu()
+    {
+        return hrane;
+    }
+
+    method int vrat_broj_hrane()
+    {
+        return broj_hrane;
+    }
+}
